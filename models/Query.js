@@ -15,17 +15,18 @@ class Query {
   }
 
   formatTimestamp(date) {
-    // Format: "04 Feb 2026, 01:10 PM"
+    // Convert to IST (India Standard Time - UTC+5:30)
     const options = {
       day: '2-digit',
       month: 'short',
       year: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
-      hour12: true
+      hour12: true,
+      timeZone: 'Asia/Kolkata' // This sets the timezone to IST
     };
     
-    return date.toLocaleString('en-GB', options).replace(',', '');
+    return date.toLocaleString('en-IN', options);
   }
 
   validate() {
