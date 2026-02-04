@@ -11,7 +11,21 @@ class Query {
     this.name = data.name;
     this.mobile = data.mobile;
     this.searchData = data.searchData;
-    this.timestamp = new Date().toISOString();
+    this.timestamp = this.formatTimestamp(new Date());
+  }
+
+  formatTimestamp(date) {
+    // Format: "04 Feb 2026, 01:10 PM"
+    const options = {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    };
+    
+    return date.toLocaleString('en-GB', options).replace(',', '');
   }
 
   validate() {
